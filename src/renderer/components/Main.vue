@@ -7,7 +7,7 @@
         <h1>Panvic</h1>
       </div>
       <div id="user_info">
-        <Avator :user="user.icon"/>
+        <img :src="loginUser.icon" class="avator_image">
         <span class="online_status"></span>
         <div>
           <p>{{ loginUser.name }}</p>
@@ -125,7 +125,7 @@
                 v-for="message in messages"
                 v-if="messageFilter(message)"
               >
-                <Avator :user="userObj[message.user].icon"/>
+                <img :src="userObj[message.user].icon" class="avator_image">
                 <div>
                   <div class="message_user">{{ userObj[message.user].name }}
                     <span>{{ convertTime(message.createdAt) }}</span></div>
@@ -574,7 +574,6 @@
   import 'firebase/database'
 
   import PlusCircle from './icons/PlusCircle'
-  import Avator from './Avator'
 
   const childProcess = require('child_process')
   const fs = require('fs')
@@ -590,8 +589,7 @@
 
   export default {
     components: {
-      PlusCircle,
-      Avator
+      PlusCircle
     },
     data () {
       return {
